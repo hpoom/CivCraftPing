@@ -23,10 +23,8 @@ define( [
 				var users = new Users( {endpoint: 'online'});
 				users.fetch( {success: function () {
 					// Initialise our user panel view
-					//var userPanel = new OnlineView( {model: user} );
-					console.log( users );
+					var onlineView = new OnlineView( {collection: users} );
 				}} );
-				var onlineView = new OnlineView();
 			} );
     }
   } );

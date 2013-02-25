@@ -23,7 +23,7 @@ define( [
 			var self = this;
 			// Compile the template using handelbars
 			require( ['hbs!../templates/online'], function ( onlineTpl ) {
-				self.$el.html( onlineTpl( {test: "world"} ) ); //self.model.toJSON()
+				self.$el.html( onlineTpl( { online: self.collection.toJSON() } ) );
 			} );
 		},
 	} );
