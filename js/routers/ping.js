@@ -18,7 +18,16 @@ define( [
       "": "home"
     },
     home: function() {
-			
+			// Request our userPanel view
+			require( ['collections/users', 'views/online'], function( Users, OnlineView ) {
+				var users = new Users( {endpoint: 'online'});
+				users.fetch( {success: function () {
+					// Initialise our user panel view
+					//var userPanel = new OnlineView( {model: user} );
+					console.log( users );
+				}} );
+				var onlineView = new OnlineView();
+			} );
     }
   } );
 
