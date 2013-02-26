@@ -1,6 +1,6 @@
 /**
 * @name /js/model/player.js
-* @description User Model
+* @description Player Model
 * @author Simon Wood <hpoomdev@gamil.com>
 */
 

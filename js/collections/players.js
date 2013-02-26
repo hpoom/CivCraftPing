@@ -1,6 +1,6 @@
 /**
 * @name /js/model/players.js
-* @description Player Collection
+* @description Players Collection
 * @author Simon Wood <hpoomdev@gamil.com>
 */
 
@@ -23,7 +23,7 @@ define( [
 			return 'http://skynet.nickg.org/' + this.endpoint;
 		},
 		comparator: function( collection ) {
-			return( collection.get( 'loginTime' ) );
+			return( collection.get( 'time' ) );
 		},
 		parse: function( response ) {
 			response = _.pairs( response );
