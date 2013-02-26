@@ -18,12 +18,12 @@ define( [
       "": "home"
     },
     home: function() {
-			// Request our userPanel view
-			require( ['collections/users', 'views/online'], function( Users, OnlineView ) {
-				var users = new Users( {endpoint: 'online'});
-				users.fetch( {success: function () {
+			// Request our players collection and online view
+			require( ['collections/players', 'views/online'], function( Players, OnlineView ) {
+				var onlinePlayers = new Players( {endpoint: 'online'});
+				onlinePlayers.fetch( {success: function () {
 					// Initialise our user panel view
-					var onlineView = new OnlineView( {collection: users} );
+					var onlineView = new OnlineView( {collection: onlinePlayers} );
 				}} );
 			} );
     }

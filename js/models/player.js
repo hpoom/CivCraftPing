@@ -1,5 +1,5 @@
 /**
-* @name /js/model/user.js
+* @name /js/model/player.js
 * @description User Model
 * @author Simon Wood <hpoomdev@gamil.com>
 */
@@ -11,7 +11,7 @@ define( [
 	'handlebars',
 	'hbs'
 ], function( $, _, Backbone ) {
-  var User = Backbone.Model.extend( {
+  var Player = Backbone.Model.extend( {
 	} );
-  return User;
+  return Player;
 } );
