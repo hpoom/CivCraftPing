@@ -28,8 +28,9 @@ define( [
 		parse: function( response ) {
 			response = _.pairs( response );
 			_.each( response, function( element, index, list ) {
-				list[index] = _.object( ['id', 'loginTime'], element );
-				list[index].timeOnline = moment( list[index].loginTime ).fromNow( true );
+				list[index] = _.object( ['id', 'time'], element );
+				list[index].loginTime = moment( list[index].time ).calendar();
+				list[index].timeOnline = moment( list[index].time ).fromNow( true );
 			} );
 			return response;
 		}
