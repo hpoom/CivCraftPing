@@ -21,6 +21,9 @@ define( [
 			// Get the user's data from SkyNet api
 			return 'http://skynet.nickg.org/' + this.endpoint;
 		},
+		comparator: function( collection ) {
+			return( collection.get( 'loginTime' ) );
+		},
 		parse: function( response ) {
 			response = _.pairs( response );
 			_.each( response, function( element, index, list ) {
