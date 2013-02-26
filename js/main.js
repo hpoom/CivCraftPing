@@ -34,14 +34,14 @@ require.config( {
 		underscore: 'libs/underscore',
 		backbone: 'libs/backbone',
 		i18nprecompile: 'libs/i18nprecompile',
-		hbs: 'libs/hbs'
+		hbs: 'libs/hbs',
+		moment: 'libs/moment'
 	},
 	hbs: {
     disableI18n: true,
 		disableHelpers: true
 	}
 } );
-
 
 require( ['application'], function( App ) {
   // The "app" dependency is passed in as "App"

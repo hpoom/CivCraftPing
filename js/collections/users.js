@@ -8,10 +8,11 @@ define( [
   'jquery',
   'underscore',
   'backbone',
+	'moment',
 	'models/user',
 	'handlebars',
 	'hbs'
-], function( $, _, Backbone, User ) {
+], function( $, _, Backbone, moment, User ) {
   var Users = Backbone.Collection.extend( {
 		model: User,
 		initialize: function ( params ) {
@@ -28,13 +29,8 @@ define( [
 			response = _.pairs( response );
 			_.each( response, function( element, index, list ) {
 				list[index] = _.object( ['user', 'loginTime'], element );
-				var dLoginTime = Date.parse( list[index].loginTime );
-				var dNow = new Date(); // Now does not consider time zones. Must add time zones in.
-				var buffer = 1000 * 60; // 60 second bufer to make sure times are not negative.
-				// Maybe just set negative numbers to zero???
-				list[index].timeOnline = Math.round( ( dNow.getTime() - dLoginTime ) / 1000 / 60 );
+				list[index].timeOnline = moment( list[index].loginTime ).fromNow( true );
 			} );
-			console.log( response );
 			return response;
 		}
 	} );
