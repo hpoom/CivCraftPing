@@ -6,3 +6,7 @@
 .online table td {
 	padding: 0px 10px;
 }
+
+#liveChart {
+	height: 300px;
+}

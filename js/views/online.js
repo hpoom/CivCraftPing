@@ -17,7 +17,7 @@ define( [
 		events: {
 		},
 		initialize: function() {
-			this.render();
+			this.listenTo( this.collection, 'reset', this.render ); // Change to rerender on collection reset.
 		},
 		render: function(){
 			var self = this;
