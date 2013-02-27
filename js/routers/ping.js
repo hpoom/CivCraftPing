@@ -25,7 +25,7 @@ define( [
 				var onlinePlayers = new Players( {endpoint: 'online'} );
 				// Initialise our user panel view
 				var onlineView = new OnlineView( {collection: onlinePlayers} );
-				var poller = Poller.get( onlinePlayers, {delay: 5000} ).start(); // 5 seconds
+				var poller = Poller.get( onlinePlayers, {delay: 10000} ).start(); // 10 seconds
 				// Dynamic graph stuff
 				var graphView = new GraphView( {collection: onlinePlayers} );
 			} );

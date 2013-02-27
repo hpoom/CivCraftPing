@@ -33,7 +33,6 @@ define( [
 				list[index].timeOnline = moment( list[index].time ).fromNow( true );
 				list[index].avatarSmall = 'https://minotar.net/avatar/' + list[index].id + '/16.png';
 			} );
-			console.log( _.keys( response ).length );
 			return response;
 		}
 	} );

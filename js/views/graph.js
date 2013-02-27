@@ -9,7 +9,6 @@ define( [
   'underscore',
   'backbone',
 	'highcharts',
-	'libs/highcharts/modules/exporting',
 	'handlebars',
 	'hbs'
 ], function( $, _, Backbone, Highcharts ) {
@@ -19,7 +18,7 @@ define( [
 		events: {
 		},
 		initialize: function() {
-			this.listenTo( this.collection, 'reset', this.graphCount() );
+			this.listenTo( this.collection, 'reset', this.graphCount );
 			
 			// Highchart stuff. Clearn up later!
 			var self = this;
@@ -30,7 +29,7 @@ define( [
 					marginRight: 10,
 				},
 				title: {
-					text: 'Live random data'
+					text: 'Total players online'
 				},
 				xAxis: {
 					type: 'datetime',
@@ -67,7 +66,7 @@ define( [
 						time = (new Date()).getTime(),
 						i;
 
-						for (i = -19; i <= 0; i++) {
+						for (i = -290; i <= 0; i=i+10) {
 							data.push({
 								x: time + i * 1000,
 								y: 0
@@ -81,12 +80,9 @@ define( [
 			console.log( self.chart.series[0] );
 		},
 		graphCount: function() {
-			if ( _.isObject( self.chart ) ) {
-				var x = (new Date()).getTime(); // current time
-				var y = this.collection.length;
-				self.chart.series[0].addPoint([x, y], true, true);
-				console.log( 'add point' );
-			}
+			var x = (new Date()).getTime(); // current time
+			var y = this.collection.length;
+			this.chart.series[0].addPoint([x, y], true, true);
 		}
 	} );
 

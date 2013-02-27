@@ -25,7 +25,7 @@ define( [
 			require( ['hbs!../templates/online'], function ( onlineTpl ) {
 				self.$el.html( onlineTpl( {online: self.collection.toJSON(), count: self.collection.length} ) );
 			} );
-		},
+		}
 	} );
 
   return Online;
