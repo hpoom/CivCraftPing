@@ -1,10 +1,10 @@
 <table>
 	<thead>
-		<td></td><td>Player</td><td>Login time</td><td>Time online</td>
+		<td>{{count}}</td><td>Player</td><td>Login time</td><td>Time online</td>
 	</thead>
 	{{#each online}}
 		<tr>
-			<td><img src="https://minotar.net/avatar/{{id}}/16.png"/></td><td>{{id}}</td><td>{{loginTime}}</td><td>{{timeOnline}}</td>
+			<td><img src="{{avatarSmall}}"/></td><td>{{id}}</td><td>{{loginTime}}</td><td>{{timeOnline}}</td>
 		</tr>
 	{{/each}}
 </table>

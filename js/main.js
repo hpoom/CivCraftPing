@@ -23,9 +23,13 @@ require.config( {
 		hbs: {
 			deps: ['backbone','handlebars','i18nprecompile','json2']
 		},
-		oauth: {
-			deps: ['backbone']	
-		}
+		poller: {
+			deps: ['backbone']
+		},
+		highcharts: {
+			deps: ['jquery'],
+			exports: 'Highcharts'
+		}  
 	},
 	paths: {
 		jquery: 'libs/jquery',
@@ -35,6 +39,8 @@ require.config( {
 		backbone: 'libs/backbone',
 		i18nprecompile: 'libs/i18nprecompile',
 		hbs: 'libs/hbs',
+		poller: 'libs/backbone.poller.min',
+		highcharts: 'libs/highcharts/highcharts',
 		moment: 'libs/moment'
 	},
 	hbs: {

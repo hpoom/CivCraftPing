@@ -17,15 +17,15 @@ define( [
 		events: {
 		},
 		initialize: function() {
-			this.render();
+			this.listenTo( this.collection, 'reset', this.render ); // Change to rerender on collection reset.
 		},
 		render: function(){
 			var self = this;
 			// Compile the template using handelbars
 			require( ['hbs!../templates/online'], function ( onlineTpl ) {
-				self.$el.html( onlineTpl( { online: self.collection.toJSON() } ) );
+				self.$el.html( onlineTpl( {online: self.collection.toJSON(), count: self.collection.length} ) );
 			} );
-		},
+		}
 	} );
 
   return Online;

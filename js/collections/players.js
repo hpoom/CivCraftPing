@@ -31,6 +31,7 @@ define( [
 				list[index] = _.object( ['id', 'time'], element );
 				list[index].loginTime = moment( list[index].time ).calendar();
 				list[index].timeOnline = moment( list[index].time ).fromNow( true );
+				list[index].avatarSmall = 'https://minotar.net/avatar/' + list[index].id + '/16.png';
 			} );
 			return response;
 		}
