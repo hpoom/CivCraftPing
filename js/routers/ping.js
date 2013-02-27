@@ -42,7 +42,7 @@ define( [
 				
 				// This needs changing.
 				playersOverTime.on( 'change', function() {
-					console.log( playersOverTime.toJSON() );
+					//console.log( playersOverTime.toJSON() );
 				}, this );
 				
 				
