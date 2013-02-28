@@ -13,11 +13,27 @@
 		<script src="js/libs/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 	</head>
 	<body>
-		<div class="container" id="content">
-			<div class="row-fluid">
-				<div class="span6 online"></div>
-				<div class="span6 graph" id="liveChart"></div>
-			</div>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">CivCraftPing</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Live Stats</a></li>
+              <li><a href="#players">Players & Bounties</a></li>
+              <li><a href="#trade">Trade</a></li>
+							<li><a href="#locations">Locations</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+		<div class="container-fluid" id="content">
 		</div>
 		<script data-main="js/main" src="js/libs/require.js"></script>
 	</body>

@@ -12,46 +12,68 @@ define( [
 	'moment'
 ], function( $, _, Backbone, Poller, moment ) {
 
-  // Defining the application router, you can attach sub routers here.
-  var CivCraftPing = Backbone.Router.extend( {
-    initialize: function() {			
+	// Defining the application router, you can attach sub routers here.
+	var CivCraftPing = Backbone.Router.extend( {
+		initialize: function() {	
 		},
 		routes: {
-      "": "home"
-    },
+ 			"": "home",
+			"players": "players",
+			"trade": "trade",
+			"locations": "locations"
+		},
     home: function() {
-			// Request our players collection and online view
-			require( ['collections/players', 'views/online', 'views/graph'], function( Players, OnlineView, GraphView ) {
-				var onlinePlayers = new Players( {endpoint: 'online'} );
-				// Initialise our user panel view
-				var onlineView = new OnlineView( {collection: onlinePlayers} );
-				var poller = Poller.get( onlinePlayers, {delay: 10000} ).start(); // 10 seconds
-				// Dynamic graph stuff
-				var graphView = new GraphView( {collection: onlinePlayers} );
-			} );
-			
-			// Get a count of players online by chunks over a period of time
-			require( ['collections/playerCounts','models/playerCount'], function( PlayersOverTime, PlayerCount ) {
-				/*
-				var playersOverTime = new PlayersOverTime();
-				// Loop back over last hour in 5min increments
-				_.each( _.range( 60, 0, -5 ), function( element, index, list ) {
-					var startOfHour = moment().startOf( 'hour' ).format();
-					var tenMinsAgo = moment().subtract( "minutes", element ).format();
-					var playerCount = new PlayerCount( {time: tenMinsAgo});
-					playerCount.fetch();
-					playersOverTime.add( playerCount );
-				} );
-				
-				// This needs changing.
-				playersOverTime.on( 'change', function() {
-					//console.log( playersOverTime.toJSON() );
-				}, this );
-				
-				*/
-			} );
-    }
-  } );
+			require( ['hbs!../templates/main'], function ( mainTpl ) {
+				$( '#content' ).html( mainTpl( {home: 'true'} ) );
 
-  return CivCraftPing
+				// Request our players collection and online view
+				require( ['collections/players', 'views/online', 'views/graph'], function( Players, OnlineView, GraphView ) {
+					var onlinePlayers = new Players( {endpoint: 'online'} );
+					// Initialise our user panel view
+					var onlineView = new OnlineView( {collection: onlinePlayers} );
+					var poller = Poller.get( onlinePlayers, {delay: 10000} ).start(); // 10 seconds
+					// Dynamic graph stuff
+					var graphView = new GraphView( {collection: onlinePlayers} );
+				} );
+
+				// Get a count of players online by chunks over a period of time
+				require( ['collections/playerCounts','models/playerCount'], function( PlayersOverTime, PlayerCount ) {
+					/*
+					var playersOverTime = new PlayersOverTime();
+					// Loop back over last hour in 5min increments
+					_.each( _.range( 60, 0, -5 ), function( element, index, list ) {
+						var startOfHour = moment().startOf( 'hour' ).format();
+						var tenMinsAgo = moment().subtract( "minutes", element ).format();
+						var playerCount = new PlayerCount( {time: tenMinsAgo});
+						playerCount.fetch();
+						playersOverTime.add( playerCount );
+					} );
+
+					// This needs changing.
+					playersOverTime.on( 'change', function() {
+						//console.log( playersOverTime.toJSON() );
+					}, this );
+
+					*/
+				} );
+			} );
+		},
+		players: function() {
+			require( ['hbs!../templates/main'], function ( mainTpl ) {
+				$( '#content' ).html( mainTpl( {players: 'true'} ) );
+			} );
+		},
+		trade: function() {
+			require( ['hbs!../templates/main'], function ( mainTpl ) {
+				$( '#content' ).html( mainTpl( {trade: 'true'} ) );
+			} );
+		},
+		locations: function() {
+			require( ['hbs!../templates/main'], function ( mainTpl ) {
+				$( '#content' ).html( mainTpl( {locations: 'true'} ) );
+			} );
+		}
+	} );
+
+	return CivCraftPing
 } );

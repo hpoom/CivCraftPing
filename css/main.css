@@ -3,6 +3,10 @@
    Author's custom styles
    ========================================================================== */
 
+body {
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
 .online table td {
 	padding: 0px 10px;
 }
