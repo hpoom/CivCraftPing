@@ -9,7 +9,8 @@ define( [
   'underscore',
   'backbone',
 	'poller',
-	'moment'
+	'moment',
+	'bootstrap'
 ], function( $, _, Backbone, Poller, moment ) {
 
 	// Defining the application router, you can attach sub routers here.
