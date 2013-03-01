@@ -14,3 +14,9 @@ body {
 #liveChart {
 	height: 300px;
 }
+
+.infoLink:hover {
+	color: #FFF;
+	text-decoration: underline;
+	cursor: pointer;
+}
