@@ -13,17 +13,26 @@ define( [
 ], function( $, _, Backbone ) {
   var PlayerInfo = Backbone.Model.extend( {
 		urlRoot: 'http://skynet.nickg.org/players/',
-		initialize: function() {
-			//var redditInfo = new Backbone.Model( {} );
-			//redditInfo.url = 'http://www.reddit.com/user/hpoom/about.json';
-			//redditInfo.fetch();
-			//this.set( 'redditInfo', redditInfo );
-		},
 		parse: function( response ) {
 			var eventData = response;
 			response = {};
 			response.loginEvents = eventData;
 			return response;
+		},
+		multiFetch: function( options ) {
+			/*
+			var redditInfo = new Backbone.Model( {} );
+			redditInfo.url = 'http://www.reddit.com/user/hpoom/about.json?jsonp=?';
+			redditInfo.fetch( { success: function(  model, response ) {
+				console.log( model );
+			}, dataType: 'jsonp' } );
+			//this.set( 'redditInfo', redditInfo );
+			*/
+			
+			// once count reached callback
+			options.success( this, multiResponse );
+			
+			return multiResponse;
 		}
 	} );
   return PlayerInfo;

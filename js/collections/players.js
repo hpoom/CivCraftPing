@@ -9,12 +9,10 @@ define( [
   'underscore',
   'backbone',
 	'moment',
-	'models/player',
 	'handlebars',
 	'hbs'
-], function( $, _, Backbone, moment, Player ) {
+], function( $, _, Backbone, moment ) {
   var Players = Backbone.Collection.extend( {
-		model: Player,
 		initialize: function ( params ) {
 			this.endpoint = params.endpoint;
 		},

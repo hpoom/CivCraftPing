@@ -34,6 +34,7 @@ define( [
 			// Get our model and view for our model
 			require( ['models/playerInfo', 'views/playerInfo'], function( PlayerInfo, PlayerInfoView ) {
 				var playerInfo = new PlayerInfo( {id: playerId} );
+				// CHANGE THIS to multi fetch
 				playerInfo.fetch( {success: function( model, response ) {
 					var playerInfoView = new PlayerInfoView( {model: model} );
 					console.log( model );
