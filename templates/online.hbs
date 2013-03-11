@@ -1,11 +1,13 @@
-<table>
+<table class="table table-bordered table-hover">
 	<thead>
-		<td>{{count}}</td><td>Player</td><td>Login time</td><td>Time online</td>
+		<tr>
+			<th>{{count}}</th><th>Player</th><th>Login time</th><th>Time online</th>
+		</tr>
 	</thead>
 	<tbody>
 		{{#each online}}
 			<tr>
-				<td><img src="{{avatarSmall}}"/></td>
+				<td><img src="{{avatarSmall}}" /></td>
 				<td class="infoLink">{{id}}</a></td>
 				<td>{{loginTime}}</td>
 				<td>{{timeOnline}}</td>

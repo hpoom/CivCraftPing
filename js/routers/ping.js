@@ -29,9 +29,9 @@ define( [
 				$( '#content' ).html( mainTpl( {stats: 'true'} ) );
 				
 				// Request our server stats view
-				require( ['views/serverStats'], function( ServerStatsView ) {
+				require( ['models/serverStats', 'views/serverStats'], function( ServerStats, ServerStatsView ) {
 					// New up our model and fetch the data to populate it
-					var serverStats = new Backbone.Model( {} );
+					var serverStats = new ServerStats();
 					serverStats.url = 'http://skynet.nickg.org/stats?at=now';
 					serverStats.fetch( { success: function( model, response ) {
 						console.log( model );
