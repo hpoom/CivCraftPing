@@ -14,8 +14,17 @@ define( [
   var ServerStats = Backbone.Model.extend( {
 		urlRoot: 'http://skynet.nickg.org/players/',
 		parse: function( response ) {
+			// Deal with Ticks
+			response.StatusTps = ( ( response.PercentTps > 80 ) ? 'success' : ( ( response.PercentTps > 60 ) ? 'warning' : 'danger' ) ); 
+			
+			// Deal with Memory
 			response.PercentUsedMem = ( response.UsedMem / response.TotalMem ) * 100;
+			response.StatusUsedMem = ( ( response.PercentUsedMem < 40 ) ? 'success' : ( ( response.PercentUsedMem < 70 ) ? 'warning' : 'danger' ) );
+			
+			// Deal with Chunks
 			response.PercentLoadedChunks = ( response.LoadedChunks / ( response.LoadedChunks + response.UnLoadedChunks ) ) * 100;
+			response.StatusLoadedChunks = ( ( response.PercentLoadedChunks < 40 ) ? 'success' : ( ( response.PercentLoadedChunks < 70 ) ? 'warning' : 'danger' ) );
+			
 			return response;
 		}
 	} );
