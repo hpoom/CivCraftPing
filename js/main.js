@@ -39,6 +39,7 @@ require.config( {
 		backbone: 'libs/backbone',
 		i18nprecompile: 'libs/i18nprecompile',
 		hbs: 'libs/hbs',
+		bootstrap: 'libs/bootstrap.min',
 		poller: 'libs/backbone.poller.min',
 		highcharts: 'libs/highcharts/highcharts',
 		moment: 'libs/moment'

@@ -1,10 +1,17 @@
-<table>
+<table class="table table-bordered table-hover">
 	<thead>
-		<td>{{count}}</td><td>Player</td><td>Login time</td><td>Time online</td>
-	</thead>
-	{{#each online}}
 		<tr>
-			<td><img src="{{avatarSmall}}"/></td><td>{{id}}</td><td>{{loginTime}}</td><td>{{timeOnline}}</td>
+			<th>{{count}}</th><th>Player</th><th>Login time</th><th>Time online</th>
 		</tr>
-	{{/each}}
+	</thead>
+	<tbody>
+		{{#each online}}
+			<tr>
+				<td><img src="{{avatarSmall}}" /></td>
+				<td class="infoLink">{{id}}</a></td>
+				<td>{{loginTime}}</td>
+				<td>{{timeOnline}}</td>
+			</tr>
+		{{/each}}
+	</tbody>
 </table>

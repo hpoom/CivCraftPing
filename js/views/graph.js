@@ -76,13 +76,13 @@ define( [
 					})()
 				}]
 			});
-			
-			console.log( self.chart.series[0] );
 		},
 		graphCount: function() {
-			var x = (new Date()).getTime(); // current time
-			var y = this.collection.length;
-			this.chart.series[0].addPoint([x, y], true, true);
+			if ( _.isObject( this.chart ) ) {
+				var x = (new Date()).getTime(); // current time
+				var y = this.collection.length;
+				this.chart.series[0].addPoint([x, y], true, true);
+			}
 		}
 	} );
 
