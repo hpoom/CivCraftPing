@@ -1,10 +1,13 @@
 <div class="row-fluid">
-	{{#if home}}
+	{{#if stats}}
+		<div class="span12" id="stats"></div>
+	{{/if}}
+	{{#if players}}
 		<div class="span6 online"></div>
 		<div class="span6 graph" id="liveChart"></div>
 	{{/if}}
-	{{#if players}}
-		<div class="span12"><h1>Players coming soon...</h1></div>
+	{{#if bounties}}
+		<div class="span12"><h1>Bounties coming soon...</h1></div>
 	{{/if}}
 	{{#if trade}}
 		<div class="span12"><h1>Trade coming soon...</h1></div>

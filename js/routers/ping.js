@@ -18,14 +18,31 @@ define( [
 		initialize: function() {	
 		},
 		routes: {
- 			"": "home",
+ 			"": "stats",
 			"players": "players",
+			"bounties": "bounties",
 			"trade": "trade",
 			"locations": "locations"
 		},
-    home: function() {
+    stats: function() {
 			require( ['hbs!../templates/main'], function ( mainTpl ) {
-				$( '#content' ).html( mainTpl( {home: 'true'} ) );
+				$( '#content' ).html( mainTpl( {stats: 'true'} ) );
+				
+				// Request our server stats view
+				require( ['views/serverStats'], function( ServerStatsView ) {
+					// New up our model and fetch the data to populate it
+					var serverStats = new Backbone.Model( {} );
+					serverStats.url = 'http://skynet.nickg.org/stats?at=now';
+					serverStats.fetch( { success: function( model, response ) {
+						console.log( model );
+						var serverStatsView = new ServerStatsView( {model: model} );
+					} } );
+				} );
+			} );
+		},
+		players: function() {
+			require( ['hbs!../templates/main'], function ( mainTpl ) {
+				$( '#content' ).html( mainTpl( {players: 'true'} ) );
 
 				// Request our players collection and online view
 				require( ['collections/players', 'views/online', 'views/graph'], function( Players, OnlineView, GraphView ) {
@@ -38,9 +55,9 @@ define( [
 				} );
 			} );
 		},
-		players: function() {
+		bounties: function() {
 			require( ['hbs!../templates/main'], function ( mainTpl ) {
-				$( '#content' ).html( mainTpl( {players: 'true'} ) );
+				$( '#content' ).html( mainTpl( {bounties: 'true'} ) );
 			} );
 		},
 		trade: function() {

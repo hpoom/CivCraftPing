@@ -37,7 +37,6 @@ define( [
 				// CHANGE THIS to multi fetch
 				playerInfo.fetch( {success: function( model, response ) {
 					var playerInfoView = new PlayerInfoView( {model: model} );
-					console.log( model );
 				} } );
 			} );
 			
