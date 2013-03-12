@@ -29,7 +29,14 @@ require.config( {
 		highcharts: {
 			deps: ['jquery'],
 			exports: 'Highcharts'
-		}  
+		},
+		d3: {
+			exports: 'd3'
+		},
+		nvd3: {
+			deps: ['d3'],
+			exports: 'nv'
+		}
 	},
 	paths: {
 		jquery: 'libs/jquery',
@@ -42,6 +49,8 @@ require.config( {
 		bootstrap: 'libs/bootstrap.min',
 		poller: 'libs/backbone.poller.min',
 		highcharts: 'libs/highcharts/highcharts',
+		d3: 'libs/nvd3/lib/d3.v2.min',
+		nvd3: 'libs/nvd3/nv.d3.min',
 		moment: 'libs/moment'
 	},
 	hbs: {

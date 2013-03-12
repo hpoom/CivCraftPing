@@ -13,13 +13,6 @@ define( [
 	'hbs'
 ], function( $, _, Backbone, moment ) {
   var Players = Backbone.Collection.extend( {
-		initialize: function ( params ) {
-			this.endpoint = params.endpoint;
-		},
-		url: function() {
-			// Get the players data from SkyNet api
-			return 'http://skynet.nickg.org/' + this.endpoint;
-		},
 		comparator: function( collection ) {
 			return( collection.get( 'time' ) );
 		},

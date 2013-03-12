@@ -15,7 +15,8 @@ define( [
 
 	// Defining the application router, you can attach sub routers here.
 	var CivCraftPing = Backbone.Router.extend( {
-		initialize: function() {	
+		domains: {
+			skynet: 'http://skynet.nickg.org'
 		},
 		routes: {
  			"": "stats",
@@ -25,28 +26,38 @@ define( [
 			"locations": "locations"
 		},
     stats: function() {
+			var self = this;
 			require( ['hbs!../templates/main'], function ( mainTpl ) {
 				$( '#content' ).html( mainTpl( {stats: 'true'} ) );
 				
 				// Request our server stats view
-				require( ['models/serverStats', 'views/serverStats'], function( ServerStats, ServerStatsView ) {
+				require( ['models/serverStats', 'views/serverStats', 'views/statsGraph'], function( ServerStats, ServerStatsView, StatsGraphView ) {
 					// New up our model and fetch the data to populate it
 					var serverStats = new ServerStats();
-					serverStats.url = 'http://skynet.nickg.org/stats?at=now';
+					serverStats.url = self.domains.skynet + '/stats?at=now';
 					serverStats.fetch( { success: function( model, response ) {
-						console.log( model );
 						var serverStatsView = new ServerStatsView( {model: model} );
+					} } );
+				
+					// Deal with the server stats graph
+					var graphServerStats = new Backbone.Collection;
+					graphServerStats.model = ServerStats;
+					graphServerStats.url = self.domains.skynet + '/stats?from=' + moment.utc().subtract( 'hours', 24 ).toJSON();
+					graphServerStats.fetch( { success: function(  collection, response ) {
+						var statsGraphView = new StatsGraphView( {collection: collection} );
 					} } );
 				} );
 			} );
 		},
 		players: function() {
+			var self = this;
 			require( ['hbs!../templates/main'], function ( mainTpl ) {
 				$( '#content' ).html( mainTpl( {players: 'true'} ) );
 
 				// Request our players collection and online view
 				require( ['collections/players', 'views/online', 'views/graph'], function( Players, OnlineView, GraphView ) {
-					var onlinePlayers = new Players( {endpoint: 'online'} );
+					var onlinePlayers = new Players();
+					onlinePlayers.url = self.domains.skynet + '/online';
 					// Initialise our user panel view
 					var onlineView = new OnlineView( {collection: onlinePlayers} );
 					var poller = Poller.get( onlinePlayers, {delay: 10000} ).start(); // 10 seconds

@@ -15,6 +15,10 @@ body {
 	height: 300px;
 }
 
+svg text {
+	fill: #C8C8C8;
+}
+
 .infoLink:hover {
 	color: #FFF;
 	text-decoration: underline;
