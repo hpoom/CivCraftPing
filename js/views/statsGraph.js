@@ -46,12 +46,22 @@ define( [
 			return [
 				{"key": "TPS","values": this.formatData( 'PercentTps' )},
 				{"key": "Memory","values": this.formatData( 'PercentUsedMem' )},
-				{"key": "Chunks","values": this.formatData( 'PercentLoadedChunks' )}
+				{"key": "Chunks","values": this.formatData( 'PercentLoadedChunks' )},
+				{"key": "Player","values": this.formatData( 'Players' )},
+				{"key": "Mobs","values": this.formatData( 'Mobs' )}
 			];
 		},
 		formatData: function( dataItem ) {
 			var formattedData = this.collection.map( function( model ) {
-				return {x: new Date( model.get( 'Time' ) ), y: ( model.get( dataItem ) / 100 ) };
+				var yData = model.get( dataItem ) / 100;
+				// Deal with players and mobs
+				if ( dataItem === 'Players' ) {
+					yData = model.get( dataItem ) / 300; // Assume 300 is max players
+				} else if ( dataItem === 'Mobs' ) {
+					yData = model.get( dataItem ) / 5000; // Assume 5000 is max mobs
+				}
+				
+				return {x: new Date( model.get( 'Time' ) ), y: yData };
 			} );
 			
 			return formattedData;
