@@ -12,7 +12,7 @@ define( [
 	'hbs'
 ], function( $, _, Backbone ) {
   var PlayerInfo = Backbone.Model.extend( {
-		urlRoot: 'http://skynet.nickg.org/players/',
+		urlRoot: window.ping.domains.skynet + '/players/',
 		parse: function( response ) {
 			var eventData = response;
 			response = {};

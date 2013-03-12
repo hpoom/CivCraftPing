@@ -12,7 +12,6 @@ define( [
 	'hbs'
 ], function( $, _, Backbone ) {
   var ServerStats = Backbone.Model.extend( {
-		urlRoot: 'http://skynet.nickg.org/players/',
 		parse: function( response ) {
 			// Deal with Ticks
 			response.StatusTps = ( ( response.PercentTps > 80 ) ? 'success' : ( ( response.PercentTps > 60 ) ? 'warning' : 'danger' ) ); 
