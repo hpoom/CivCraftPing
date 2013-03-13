@@ -21,8 +21,8 @@ define( [
 			response.StatusUsedMem = ( ( response.PercentUsedMem < 40 ) ? 'success' : ( ( response.PercentUsedMem < 70 ) ? 'warning' : 'danger' ) );
 			
 			// Deal with Chunks
-			response.PercentLoadedChunks = ( response.LoadedChunks / ( response.LoadedChunks + response.UnLoadedChunks ) ) * 100;
-			response.StatusLoadedChunks = ( ( response.PercentLoadedChunks < 40 ) ? 'success' : ( ( response.PercentLoadedChunks < 70 ) ? 'warning' : 'danger' ) );
+			response.PercentLoadedChunks = ( response.LoadedChunks / 50000 ) * 100;
+			response.StatusLoadedChunks = ( ( response.PercentLoadedChunks < 30 ) ? 'success' : ( ( response.PercentLoadedChunks < 60 ) ? 'warning' : 'danger' ) );
 			
 			return response;
 		}
