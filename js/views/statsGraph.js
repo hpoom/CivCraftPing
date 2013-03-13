@@ -47,7 +47,7 @@ define( [
 				{"key": "TPS","values": this.formatData( 'PercentTps' )},
 				{"key": "Memory","values": this.formatData( 'PercentUsedMem' )},
 				{"key": "Chunks","values": this.formatData( 'PercentLoadedChunks' )},
-				{"key": "Player","values": this.formatData( 'Players' )},
+				{"key": "Players","values": this.formatData( 'Players' )},
 				{"key": "Mobs","values": this.formatData( 'Mobs' )}
 			];
 		},
