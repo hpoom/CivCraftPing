@@ -42,7 +42,7 @@ define( [
 					// Deal with the server stats graph
 					var graphServerStats = new Backbone.Collection;
 					graphServerStats.model = ServerStats;
-					graphServerStats.url = self.domains.skynet + '/stats?from=' + moment.utc().subtract( 'hours', 24 ).toJSON();
+					graphServerStats.url = self.domains.skynet + '/stats?from=' + moment.utc().subtract( 'hours', 72 ).toJSON();
 					graphServerStats.fetch( { success: function(  collection, response ) {
 						var statsGraphView = new StatsGraphView( {collection: collection} );
 					} } );
