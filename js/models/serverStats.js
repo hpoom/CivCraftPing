@@ -1,7 +1,7 @@
 /**
 * @name /js/model/serverStats.js
 * @description Server Stats Model
-* @author Simon Wood <hpoomdev@gamil.com>
+* @author Simon Wood <hpoomdev@gmail.com>
 */
 
 define( [

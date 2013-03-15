@@ -1,7 +1,7 @@
 /**
 * @name /js/main.js
 * @description Boilerplate code, sort out requirejs shim then kick off the app with init() 
-* @author Simon Wood <hpoomdev@gamil.com>
+* @author Simon Wood <hpoomdev@gmail.com>
 */
 
 require.config( {

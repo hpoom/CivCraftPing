@@ -1,7 +1,7 @@
 /**
 * @name /js/application.js
 * @description Application bootstrap
-* @author Simon Wood <hpoomdev@gamil.com>
+* @author Simon Wood <hpoomdev@gmail.com>
 */
 
 define( [

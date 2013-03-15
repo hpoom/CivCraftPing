@@ -1,7 +1,7 @@
 /**
 * @name /js/views/statsGraph.js
 * @description Stats Graph View
-* @author Simon Wood <hpoomdev@gamil.com>
+* @author Simon Wood <hpoomdev@gmail.com>
 */
 
 define( [

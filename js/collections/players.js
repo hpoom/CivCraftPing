@@ -1,7 +1,7 @@
 /**
 * @name /js/model/players.js
 * @description Players Collection
-* @author Simon Wood <hpoomdev@gamil.com>
+* @author Simon Wood <hpoomdev@gmail.com>
 */
 
 define( [
