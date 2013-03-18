@@ -1,7 +1,7 @@
 /**
 * @name /js/routers/ping.js
 * @description Application bootstrap
-* @author Simon Wood <hpoomdev@gamil.com>
+* @author Simon Wood <hpoomdev@gmail.com>
 */
 
 define( [
@@ -16,7 +16,8 @@ define( [
 	// Defining the application router, you can attach sub routers here.
 	var CivCraftPing = Backbone.Router.extend( {
 		domains: {
-			skynet: 'http://skynet.nickg.org'
+			skynet: 'http://skynet.nickg.org',
+			hpoom: 'http://www.hpoom.co.uk'
 		},
 		routes: {
  			"": "stats",
@@ -42,7 +43,7 @@ define( [
 					// Deal with the server stats graph
 					var graphServerStats = new Backbone.Collection;
 					graphServerStats.model = ServerStats;
-					graphServerStats.url = self.domains.skynet + '/stats?from=' + moment.utc().subtract( 'hours', 72 ).toJSON();
+					graphServerStats.url = self.domains.skynet + '/stats?from=' + moment.utc().subtract( 'hours', 24 ).toJSON();
 					graphServerStats.fetch( { success: function(  collection, response ) {
 						var statsGraphView = new StatsGraphView( {collection: collection} );
 					} } );
@@ -77,8 +78,18 @@ define( [
 			} );
 		},
 		locations: function() {
+			var self = this;
 			require( ['hbs!../templates/main'], function ( mainTpl ) {
 				$( '#content' ).html( mainTpl( {locations: 'true'} ) );
+				
+				require( ['views/locations'], function( LocationsView ) {
+					// Fetch locations from our xml to json script on hpoom.co.uk
+					var locations = new Backbone.Collection;
+					locations.url = self.domains.hpoom + '/CivCraft/mapXmlToJson.php?callback=?';
+					locations.fetch( { success: function(  collection, response ) {
+						var locationsView = new LocationsView( {collection: collection} );
+					} } );
+				} );
 			} );
 		}
 	} );

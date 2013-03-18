@@ -1,6 +1,6 @@
 /**
-* @name /js/views/serverStats.js
-* @description Server Stats View
+* @name /js/views/locations.js
+* @description Locations View
 * @author Simon Wood <hpoomdev@gmail.com>
 */
 
@@ -12,22 +12,21 @@ define( [
 	'hbs'
 ], function( $, _, Backbone ) {
 
-  var ServerStats = Backbone.View.extend( {
-		el: '#stats',
+  var Locations = Backbone.View.extend( {
+		el: '#locations',
 		initialize: function() {
 			this.render();
 		},
 		render: function() {
 			var self = this;
 			// Compile the template using handelbars
-			require( ['hbs!../templates/serverStats'], function ( serverStatsTpl ) {
-				self.$el.html( serverStatsTpl( self.model.toJSON() ) );
+			require( ['hbs!../templates/locations'], function ( locationsTpl ) {
+				self.$el.html( locationsTpl( {locations: self.collection.toJSON()} ) );
 			} );
 		}
 	} );
 
-  return ServerStats;
-
+  return Locations;
 } );
 
 

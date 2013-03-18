@@ -1,0 +1,17 @@
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Name</th><th>X</th><th>Z</th><th>Attributes</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each locations}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{x}}</a></td>
+				<td>{{z}}</td>
+				<td>{{#if locked}}Locked{{/if}} {{#if griefed}}Griefed{{/if}} {{#if uninhabited}}Uninhabited{{/if}}</td>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>

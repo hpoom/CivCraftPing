@@ -1,7 +1,7 @@
 /**
 * @name /js/model/playerInfo.js
 * @description Player Info Model
-* @author Simon Wood <hpoomdev@gamil.com>
+* @author Simon Wood <hpoomdev@gmail.com>
 */
 
 define( [

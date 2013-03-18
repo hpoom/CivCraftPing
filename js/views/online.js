@@ -1,7 +1,7 @@
 /**
 * @name /js/views/online.js
 * @description Online View
-* @author Simon Wood <hpoomdev@gamil.com>
+* @author Simon Wood <hpoomdev@gmail.com>
 */
 
 define( [
