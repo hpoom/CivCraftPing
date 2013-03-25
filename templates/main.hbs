@@ -5,8 +5,14 @@
 			</div>
 			<div class="row-fluid" id="statsGraph">
 				<div class="span12" >
-					<svg style="height: 500px;display:block;width: 100%;"></svg>
+					<div class="btn-group">
+						<a href="#stats" class="btn btn-mini{{#unless graphTime}} active{{/unless}}">6h</a>
+						<a href="#stats/24" class="btn btn-mini{{#compare 24 graphTime operator="=="}} active{{/compare}}">24h</a>
+						<a href="#stats/72" class="btn btn-mini{{#compare 72 graphTime operator="=="}} active{{/compare}}">3 days</a>
+						<a href="#stats/168" class="btn btn-mini{{#compare 168 graphTime operator="=="}} active{{/compare}}">7 days</a>
+					</div>
 					<small>Chunks currently show as % assuming 50k chunks is 100%. Player numbers currently show as % assuming 300 players is 100%. Mob numbers currently show as % assuming 5000 mobs is 100%</small>
+					<svg style="height: 500px;display:block;width: 100%;"></svg>
 				</div>
 			</div>
 		</div>

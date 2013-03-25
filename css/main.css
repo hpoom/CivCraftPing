@@ -24,3 +24,7 @@ svg text {
 	text-decoration: underline;
 	cursor: pointer;
 }
+
+.navbar .brand {
+	color: #FF7F0E; /* 76C81B */
+}

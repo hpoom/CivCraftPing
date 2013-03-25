@@ -21,15 +21,24 @@ define( [
 		},
 		routes: {
  			"": "stats",
+			"stats": "stats",
+			"stats/:graphTime": "stats",
 			"players": "players",
 			"bounties": "bounties",
 			"trade": "trade",
 			"locations": "locations"
 		},
-    stats: function() {
+		navigate: function( route ) {
+			// Do some analytics here...
+			//console.log( route );
+			// Remover active from all nav then apply to correct nav element
+			$( 'ul.nav li' ).removeClass( 'active' );
+			$( 'ul.nav li.' + route + 'Nav' ).addClass( 'active' );
+		},
+    stats: function( graphTime ) {
 			var self = this;
 			require( ['hbs!../templates/main'], function ( mainTpl ) {
-				$( '#content' ).html( mainTpl( {stats: 'true'} ) );
+				$( '#content' ).html( mainTpl( {stats: 'true', graphTime: graphTime } ) );
 				
 				// Request our server stats view
 				require( ['models/serverStats', 'views/serverStats', 'views/statsGraph'], function( ServerStats, ServerStatsView, StatsGraphView ) {
@@ -41,9 +50,10 @@ define( [
 					} } );
 				
 					// Deal with the server stats graph
+					var graphFrom = moment.utc().subtract( 'hours', ( !_.isNaN( parseInt( graphTime ) ) ? parseInt( graphTime ) : 6 ) ).toJSON();
 					var graphServerStats = new Backbone.Collection;
 					graphServerStats.model = ServerStats;
-					graphServerStats.url = self.domains.skynet + '/stats?from=' + moment.utc().subtract( 'hours', 24 ).toJSON();
+					graphServerStats.url = self.domains.skynet + '/stats?from=' + graphFrom;
 					graphServerStats.fetch( { success: function(  collection, response ) {
 						var statsGraphView = new StatsGraphView( {collection: collection} );
 					} } );
@@ -93,6 +103,6 @@ define( [
 			} );
 		}
 	} );
-
+	
 	return CivCraftPing
 } );
