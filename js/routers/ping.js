@@ -17,10 +17,11 @@ define( [
 	var CivCraftPing = Backbone.Router.extend( {
 		domains: {
 			skynet: 'http://skynet.nickg.org',
-			hpoom: 'http://www.hpoom.co.uk'
+			hpoom: 'http://www.hpoom.co.uk',
+			reddit: 'http://www.reddit.com'
 		},
 		routes: {
- 			"": "stats",
+ 			"": "home",
 			"stats": "stats",
 			"stats/:graphTime": "stats",
 			"players": "players",
@@ -35,10 +36,23 @@ define( [
 			$( 'ul.nav li' ).removeClass( 'active' );
 			$( 'ul.nav li.' + route + 'Nav' ).addClass( 'active' );
 		},
+		home: function() {
+			var self = this;
+			require( ['hbs!../templates/main'], function ( mainTpl ) {
+				$( '#content' ).html( mainTpl( {home: 'true'} ) );
+				require( ['collections/reddit','views/news'], function( Reddit, NewsView ) {
+					var morningChangeNews = new Reddit();
+					morningChangeNews.url = self.domains.reddit + '/r/Civcraft/search.json?q=title:morning+change+author:ttk2&restrict_sr=on&sort=new&t=week&jsonp=?';
+					morningChangeNews.fetch( { success: function(  collection, response ) {
+						var newsView = new NewsView( {collection: collection} );
+					} } );
+				} );
+		} );
+		},
     stats: function( graphTime ) {
 			var self = this;
 			require( ['hbs!../templates/main'], function ( mainTpl ) {
-				$( '#content' ).html( mainTpl( {stats: 'true', graphTime: graphTime } ) );
+				$( '#content' ).html( mainTpl( {stats: 'true', graphTime: graphTime} ) );
 				
 				// Request our server stats view
 				require( ['models/serverStats', 'views/serverStats', 'views/statsGraph'], function( ServerStats, ServerStatsView, StatsGraphView ) {
