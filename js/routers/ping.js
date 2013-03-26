@@ -66,14 +66,23 @@ define( [
 				$( '#content' ).html( mainTpl( {players: 'true'} ) );
 
 				// Request our players collection and online view
-				require( ['collections/players', 'views/online', 'views/graph'], function( Players, OnlineView, GraphView ) {
+				require( ['collections/players', 'views/online', 'models/basicPlayer', 'views/playerSearch'], function( Players, OnlineView, BasicPlayer, PlayerSearchView ) {
 					var onlinePlayers = new Players();
 					onlinePlayers.url = self.domains.skynet + '/online';
 					// Initialise our user panel view
 					var onlineView = new OnlineView( {collection: onlinePlayers} );
 					var poller = Poller.get( onlinePlayers, {delay: 10000} ).start(); // 10 seconds
-					// Dynamic graph stuff
-					var graphView = new GraphView( {collection: onlinePlayers} );
+					
+					// All players search collection
+					var allPlayers = new Backbone.Collection;
+					allPlayers.model = BasicPlayer;
+					allPlayers.url = self.domains.skynet + '/players';
+					
+					allPlayers.fetch( { success: function(  collection, response ) {
+						var playerSearchView = new PlayerSearchView( {collection: allPlayers} );
+					} } );
+					
+					
 				} );
 			} );
 		},
