@@ -1,5 +1,5 @@
 /**
-* @name /js/model/players.js
+* @name /js/collections/players.js
 * @description Players Collection
 * @author Simon Wood <hpoomdev@gmail.com>
 */
