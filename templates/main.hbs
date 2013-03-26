@@ -19,7 +19,12 @@
 	{{/if}}
 	{{#if players}}
 		<div class="span6 online"></div>
-		<div class="span6 graph" id="liveChart"></div>
+		<div class="span6 search">
+			<form class="form-inline">
+				<label for="playerSearch">Player search </label> 
+				<input type="text" id="playerSearch" class="input-medium search-query" data-provide="type-ahead" class="typeahead" />  
+			</form>
+		</div>
 	{{/if}}
 	{{#if bounties}}
 		<div class="span12"><h1>Bounties coming soon...</h1></div>
