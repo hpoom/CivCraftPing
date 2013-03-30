@@ -1,6 +1,6 @@
 [
 	{
-		"id":1,
+		"id":"1",
 		"name":"Stone",
 		"isArmor":false,
 		"isStackable":true,
@@ -8,7 +8,7 @@
 		"icon":"100-1.png"
 	},
 	{
-		"id":2,
+		"id":"2",
 		"name":"Grass Block",
 		"isArmor":false,
 		"isStackable":true,
@@ -16,7 +16,7 @@
 		"icon":"100-2.png"
 	},
 	{
-		"id":3,
+		"id":"3",
 		"name":"Dirt",
 		"isArmor":false,
 		"isStackable":true,
@@ -24,10 +24,211 @@
 		"icon":"100-3.png"
 	},
 	{
+		"id":"4",
 		"name":"Cobblestone",
 		"isArmor":false,
 		"isStackable":true,
 		"stackSize":64,
 		"icon":"100-4.png"
+	},
+	{
+		"id":"5",
+		"name":"Wood Planks",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-5.png"
+	},
+	{
+		"id":"5:0",
+		"name":"Oak Wood Planks",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-5-d0.png"
+	},
+	{
+		"id":"5:1",
+		"name":"Spruce Wood Planks",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-5-d1.png"
+	},
+	{
+		"id":"5:2",
+		"name":"Birch Wood Planks",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-5-d2.png"
+	},
+	{
+		"id":"5:3",
+		"name":"Jungle Wood Planks",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-5-d3.png"
+	},
+	{
+		"id":"6",
+		"name":"Saplings",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-6.png"
+	},
+	{
+		"id":"6:0",
+		"name":"Oak Sapling",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-6-d0.png"
+	},
+	{
+		"id":"6:1",
+		"name":"Spruce Sapling",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-6-d2.png"
+	},
+	{
+		"id":"6:2",
+		"name":"Birch Sapling",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-6-d1.png"
+	},
+	{
+		"id":"6:3",
+		"name":"Jungle Sapling",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-6-d3.png"
+	},
+	{
+		"id":"12",
+		"name":"Sand",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-12.png"
+	},
+	{
+		"id":"13",
+		"name":"Gravel",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-13.png"
+	},
+	{
+		"id":"14",
+		"name":"Gold Ore",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-14.png"
+	},
+	{
+		"id":"15",
+		"name":"Iron ore",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-15.png"
+	},
+	{
+		"id":"16",
+		"name":"Coal Ore",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-16.png"
+	},
+	{
+		"id":"17",
+		"name":"Wood",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-17.png"
+	},
+	{
+		"id":"17:0",
+		"name":"Oak Wood",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-17-d0.png"
+	},
+	{
+		"id":"17:1",
+		"name":"Spruce Wood",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-17-d1.png"
+	},
+	{
+		"id":"17:2",
+		"name":"Birch Wood",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-17-d2.png"
+	},
+	{
+		"id":"17:3",
+		"name":"Jungle Wood",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-17-d3.png"
+	},
+	{
+		"id":"18",
+		"name":"Leaves",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-18.png"
+	},
+	{
+		"id":"18:0",
+		"name":"Oak Leaves",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-18-d0.png"
+	},
+	{
+		"id":"18:1",
+		"name":"Spruce Leaves",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-18-d1.png"
+	},
+	{
+		"id":"18:2",
+		"name":"Birch Leaves",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-18-d2.png"
+	},
+	{
+		"id":"18:3",
+		"name":"Jungle Leaves",
+		"isArmor":"0",
+		"isStackable":"1",
+		"stackSize":64,
+		"icon":"100-18-d3.png"
 	}
 ]

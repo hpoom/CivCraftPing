@@ -14,7 +14,8 @@ define( [
   var BlockSearch = Backbone.View.extend( {
 		el: '#blockSearchForm',
 		events: {
-			'click .btn': 'fetchBlockTrades'
+			'click .btn': 'fetchBlockTrades',
+			'submit': 'fetchBlockTrades'
 		},
 		initialize: function() {
 			var self = this;
@@ -42,7 +43,6 @@ define( [
 				var exchangeResults = new Reddit();
 				exchangeResults.url = window.ping.domains.reddit + '/r/CivcraftExchange/search.json?q=title:' + item + '&restrict_sr=on&sort=new&t=month&jsonp=?';
 				exchangeResults.fetch( { success: function( collection, response ) {
-					console.log( collection );
 					var exchangeView = new ExchangeView( {collection: collection} );
 				} } );
 			} );
