@@ -1,0 +1,33 @@
+[
+	{
+		"id":1,
+		"name":"Stone",
+		"isArmor":false,
+		"isStackable":true,
+		"stackSize":64,
+		"icon":"100-1.png"
+	},
+	{
+		"id":2,
+		"name":"Grass Block",
+		"isArmor":false,
+		"isStackable":true,
+		"stackSize":64,
+		"icon":"100-2.png"
+	},
+	{
+		"id":3,
+		"name":"Dirt",
+		"isArmor":false,
+		"isStackable":true,
+		"stackSize":64,
+		"icon":"100-3.png"
+	},
+	{
+		"name":"Cobblestone",
+		"isArmor":false,
+		"isStackable":true,
+		"stackSize":64,
+		"icon":"100-4.png"
+	}
+]

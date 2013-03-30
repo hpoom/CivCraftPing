@@ -15,16 +15,13 @@ define( [
 		el: '#playerSearch',
 		initialize: function() {
 			var self = this;
-			console.log( this.$el );
 			this.$el.typeahead( {
 				source: self.collection.pluck( 'name' ),
 				items: 20
 			} );
 		}
 	} );
-
   return PlayerSearch;
-
 } );
 
 
