@@ -1,0 +1,18 @@
+<h4>Results from /r/CivcraftExchange</h4>
+<table class="table table-bordered table-hover">
+	<tbody>
+		{{#each exchange}}
+			<tr>
+				<td>
+					<strong><a href="http://redd.it/{{data.id}}" target="_blank">{{data.title}}</a></strong>
+					<p class="pull-right">
+						<span class="label">{{data.score}} votes</span> <span class="label label-info">{{data.num_comments}} comments</span>
+					</p>
+					<br/>
+					<p class="text-info">submitted {{data.createdString}} by {{data.author}}</p>
+					{{{data.selftext_html}}}
+				</td>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>

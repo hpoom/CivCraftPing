@@ -43,7 +43,7 @@ define( [
 				require( ['collections/reddit','views/news'], function( Reddit, NewsView ) {
 					var morningChangeNews = new Reddit();
 					morningChangeNews.url = self.domains.reddit + '/r/Civcraft/search.json?q=title:morning+author:ttk2&restrict_sr=on&sort=new&t=week&jsonp=?';
-					morningChangeNews.fetch( { success: function(  collection, response ) {
+					morningChangeNews.fetch( { success: function( collection, response ) {
 						var newsView = new NewsView( {collection: collection} );
 					} } );
 				} );
@@ -68,7 +68,7 @@ define( [
 					var graphServerStats = new Backbone.Collection;
 					graphServerStats.model = ServerStats;
 					graphServerStats.url = self.domains.skynet + '/stats?from=' + graphFrom;
-					graphServerStats.fetch( { success: function(  collection, response ) {
+					graphServerStats.fetch( { success: function( collection, response ) {
 						var statsGraphView = new StatsGraphView( {collection: collection} );
 					} } );
 				} );
@@ -92,11 +92,9 @@ define( [
 					allPlayers.model = BasicPlayer;
 					allPlayers.url = self.domains.skynet + '/players';
 					
-					allPlayers.fetch( { success: function(  collection, response ) {
+					allPlayers.fetch( { success: function( collection, response ) {
 						var playerSearchView = new PlayerSearchView( {collection: allPlayers} );
 					} } );
-					
-					
 				} );
 			} );
 		},
@@ -108,6 +106,15 @@ define( [
 		trade: function() {
 			require( ['hbs!../templates/main'], function ( mainTpl ) {
 				$( '#content' ).html( mainTpl( {trade: 'true'} ) );
+				require( ['views/blockSearch'], function( BlockSearchView ) {
+					// Minecraft blocks and items search collection
+					var blocksAndItems = new Backbone.Collection;
+					blocksAndItems.url = 'js/data/blockValues.json';
+	
+					blocksAndItems.fetch( { success: function( collection, response ) {
+						var blockSearchView = new BlockSearchView( {collection: blocksAndItems} );
+					} } );
+				} );
 			} );
 		},
 		locations: function() {
@@ -119,7 +126,7 @@ define( [
 					// Fetch locations from our xml to json script on hpoom.co.uk
 					var locations = new Backbone.Collection;
 					locations.url = self.domains.hpoom + '/CivCraft/mapXmlToJson.php?callback=?';
-					locations.fetch( { success: function(  collection, response ) {
+					locations.fetch( { success: function( collection, response ) {
 						var locationsView = new LocationsView( {collection: collection} );
 					} } );
 				} );
