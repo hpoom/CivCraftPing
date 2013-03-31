@@ -42,7 +42,7 @@ define( [
 				$( '#content' ).html( mainTpl( {home: 'true'} ) );
 				require( ['collections/reddit','views/news'], function( Reddit, NewsView ) {
 					var morningChangeNews = new Reddit();
-					morningChangeNews.url = self.domains.reddit + '/r/Civcraft/search.json?q=title:morning+author:ttk2&restrict_sr=on&sort=new&t=week&jsonp=?';
+					morningChangeNews.url = self.domains.reddit + '/r/Civcraft/search.json?q=author:ttk2&restrict_sr=on&sort=new&t=week&jsonp=?';
 					morningChangeNews.fetch( { success: function( collection, response ) {
 						var newsView = new NewsView( {collection: collection} );
 					} } );
