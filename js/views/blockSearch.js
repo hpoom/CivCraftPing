@@ -46,6 +46,14 @@ define( [
 					var exchangeView = new ExchangeView( {collection: collection} );
 				} } );
 			} );
+			// Get our CivTrade results
+			/*
+			var tradeResults = new Backbone.Collection;
+			tradeResults.url = window.ping.domains.civTrade + '/shops.json?search=' + item;
+			tradeResults.fetch( { success: function( collection, response ) {
+				console.log( collection );
+			} } );
+			*/
 		}
 	} );
   return BlockSearch;

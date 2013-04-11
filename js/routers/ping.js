@@ -18,7 +18,8 @@ define( [
 		domains: {
 			skynet: 'http://skynet.nickg.org',
 			hpoom: 'http://www.hpoom.co.uk',
-			reddit: 'http://www.reddit.com'
+			reddit: 'http://www.reddit.com',
+			civTrade: 'http://civtrade.herokuapp.com'
 		},
 		routes: {
  			"": "home",
@@ -30,8 +31,8 @@ define( [
 			"locations": "locations"
 		},
 		navigate: function( route ) {
-			// Do some analytics here...
-			//console.log( route );
+			// Log our pageview to GA
+			ga( 'send', 'pageview', '/#' + route );
 			// Remover active from all nav then apply to correct nav element
 			$( 'ul.nav li' ).removeClass( 'active' );
 			$( 'ul.nav li.' + route + 'Nav' ).addClass( 'active' );
