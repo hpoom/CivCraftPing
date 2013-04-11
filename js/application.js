@@ -45,6 +45,8 @@ define( [
 					}
 				} );
 				
+				// Initialise GA
+				ga( 'create', 'UA-40064761-1', 'github.com' );
 				// Start our ping controller
 				window.ping = new self.router();
 				// Add an event to call navigate on ping for every navigation
