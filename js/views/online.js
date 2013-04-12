@@ -36,6 +36,9 @@ define( [
 				var playerInfo = new PlayerInfo( {id: playerId} );
 				// CHANGE THIS to multi fetch
 				playerInfo.fetch( {success: function( model, response ) {
+					// Experimental!!!
+					model.calcTimeStats();
+					
 					var playerInfoView = new PlayerInfoView( {model: model} );
 				} } );
 			} );
