@@ -11,8 +11,8 @@ body {
 	padding: 0px 10px;
 }
 
-#liveChart {
-	height: 300px;
+.playerGraph {
+	height: 200px;
 }
 
 svg text {
@@ -33,3 +33,4 @@ svg text {
 	height: 32px;
 	width: 32px;
 }
+
