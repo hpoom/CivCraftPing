@@ -25,6 +25,8 @@ define( [
 					return playerId;
 				}
 			} );
+			// Add the total numbe of players to the DOM
+			self.$el.after( ' <span class="label">' + self.collection.length + ' Players</span>' );
 		}
 	} );
   return PlayerSearch;
