@@ -1,5 +1,5 @@
-<ul class="unstyled">
-	{{#each loginEvents}}
-		<li>{{login_time}} - {{online_time}}</li>
-	{{/each}}
-</ul>
+<strong>Information on {{id}}</strong>
+<button type="button" class="close">×</button>
+<br/>
+<span>Last login: {{lastLogin}}</span>
+<svg id="{{id}}_graph" class="playerGraph"></svg>

@@ -17,7 +17,13 @@ define( [
 			var self = this;
 			this.$el.typeahead( {
 				source: self.collection.pluck( 'name' ),
-				items: 20
+				items: 20,
+				updater: function( playerId ) {
+					require( ['views/playerInfo'], function( PlayerInfoView ) {
+						var playerInfoView = new PlayerInfoView( {playerId: playerId} );
+					} );
+					return playerId;
+				}
 			} );
 		}
 	} );

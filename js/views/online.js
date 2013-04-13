@@ -15,7 +15,7 @@ define( [
   var Online = Backbone.View.extend( {
 		el: '.online',
 		events: {
-			'click .infoLink': 'openModel',
+			'click .infoLink': 'openPlayerInfo',
 		},
 		initialize: function() {
 			this.listenTo( this.collection, 'reset', this.render ); // Change to rerender on collection reset.
@@ -27,24 +27,12 @@ define( [
 				self.$el.html( onlineTpl( {online: self.collection.toJSON(), count: self.collection.length} ) );
 			} );
 		},
-		openModel: function( event ) {
+		openPlayerInfo: function( event ) {
 			// Get player id
 			var playerId = $( event.target ).text();
-			
-			// Get our model and view for our model
-			require( ['models/playerInfo', 'views/playerInfo'], function( PlayerInfo, PlayerInfoView ) {
-				var playerInfo = new PlayerInfo( {id: playerId} );
-				// CHANGE THIS to multi fetch
-				playerInfo.fetch( {success: function( model, response ) {
-					// Experimental!!!
-					model.calcTimeStats();
-					
-					var playerInfoView = new PlayerInfoView( {model: model} );
-				} } );
+			require( ['views/playerInfo'], function( PlayerInfoView ) {
+				var playerInfoView = new PlayerInfoView( {playerId: playerId} );
 			} );
-			
-			// Model show
-			$( '#infoModal' ).modal();
 		}
 	} );
 

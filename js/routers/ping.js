@@ -65,7 +65,7 @@ define( [
 					} } );
 				
 					// Deal with the server stats graph
-					var graphFrom = moment.utc().subtract( 'hours', ( !_.isNaN( parseInt( graphTime ) ) ? parseInt( graphTime ) : 6 ) ).toJSON();
+					var graphFrom =	moment.utc().subtract( 'hours', ( !_.isNaN( parseInt( graphTime ) ) ? parseInt( graphTime ) : 6 ) ).toJSON();
 					var graphServerStats = new Backbone.Collection;
 					graphServerStats.model = ServerStats;
 					graphServerStats.url = self.domains.skynet + '/stats?from=' + graphFrom;

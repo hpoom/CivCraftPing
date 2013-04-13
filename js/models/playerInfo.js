@@ -42,7 +42,6 @@ define( [
 			// CHANGE THIS!!!
 			results = {};
 			events = this.get( 'loginEvents' );
-			totalCount = 0;
 			offsetStart = 0;
 			
 			// Loop round our steps
@@ -55,47 +54,55 @@ define( [
 				}
 				
 				// Second loop round data on this model (inefficent!!! needs reworking) - 6384, 4215, 242
-				// Make efficencys by stop keep moment cast on login and logout date (have moment version on the model in parse)
 				for ( var index = offsetStart; index < events.length; index++ ) {
 					element = events[index];
+					login_moment = moment( element.login_time );
+					logout_moment = moment( element.logout_time );
+					
 					// Check if item start date is after limit or item end date is before current date
-					if ( moment( element.login_time ) < currDate && moment( element.logout_time ) > currDateLimit ) {
+					if ( login_moment < currDate && logout_moment > currDateLimit ) {
 						// We have 100% time overlap
 						results[resultKey] += 60;
-					} else if ( moment( element.login_time ) > currDate && moment( element.login_time ) < currDateLimit ) {
+					} else if ( login_moment > currDate && login_moment < currDateLimit ) {
 						// We have a part time overlap
-						if ( moment( element.logout_time ) > currDateLimit ) {
-							time = Math.abs( currDateLimit - moment( element.login_time ) ) / ( 1000 * 60 );
+						if ( logout_moment > currDateLimit ) {
+							time = Math.abs( currDateLimit - login_moment ) / ( 1000 * 60 );
 						} else {
-							time = Math.abs( moment( element.logout_time ) - moment( element.login_time ) ) / ( 1000 * 60 );
+							time = Math.abs( logout_moment - login_moment ) / ( 1000 * 60 );
 						}
 						results[resultKey] += time;
-					} else if ( moment( element.logout_time ) > currDate && moment( element.logout_time ) < currDateLimit ) {
+					} else if ( logout_moment > currDate && logout_moment < currDateLimit ) {
 						// We have a part time overlap
-						if ( moment( element.login_time ) < currDate ) {
-							time = Math.abs( moment( element.logout_time ) - currDate ) / ( 1000 * 60 );
+						if ( login_moment < currDate ) {
+							time = Math.abs( logout_moment - currDate ) / ( 1000 * 60 );
 						} else {
-							time = Math.abs( moment( element.logout_time ) - moment( element.login_time ) ) / ( 1000 * 60 );
+							time = Math.abs( logout_moment - login_moment ) / ( 1000 * 60 );
 						}
 						results[resultKey] += time;
-					} else if ( moment( element.logout_time ) < currDate ) {
+					} else if ( logout_moment < currDate ) {
 						// If we have not yet reached our block update the offset start
 						offsetStart = index;
-					} else if ( moment( element.login_time ) > currDateLimit ) {
+					} else if ( login_moment > currDateLimit ) {
 						// If we are past the current block we are looking at then break out the loop
 						break;
 					}
-					totalCount++;
 				}
 			}
 			
 			// Clean up our results
 			for ( var key in results ) {
-				results[key] = results[key] / range / 60 * 100;
+				results[key] = results[key] / range; // Values are minutes
 			}
+			results = _.pairs( results );
+			_.each( results, function( element, index, list ) {
+				list[index] = _.object( ['label', 'value'], element );
+				list[index].label = ( parseInt( list[index].label ) < 10 ? '0' + list[index].label : list[index].label ) + ':00';
+			} );
+			results = _.sortBy( results, function( item ) {
+				return item.label;
+			} );
 			
-			console.log( totalCount );
-			console.log( results );
+			return results;
 		},
 		multiFetch: function( options ) {
 			/*
