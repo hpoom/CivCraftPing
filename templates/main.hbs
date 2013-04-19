@@ -35,17 +35,24 @@
 		<div class="span12"><h1>Bounties coming soon...</h1></div>
 	{{/if}}
 	{{#if trade}}
-		<div class="span6 search">
-			<form class="form-inline form-search" id="blockSearchForm">
+		<div class="span12 search">
+			<form class="form-inline form-search pull-left" id="blockSearchForm">
 				<div class="input-append">
 					<input type="text" id="blockSearch" class="input-medium search-query" placeholder="Enter block name..." data-provide="type-ahead" class="typeahead" autocomplete="off" />
 					<button class="btn" type="button">Search</button>
 				</div>
 				<span id="itemImage"></span>
 			</form>
-			<div class="exchange"></div>
+			<a href="http://civtrade.herokuapp.com/shops/new" target="_blank" class="btn pull-right">Add Shop to CivTrade</a>
 		</div>
-		<div class="span6"></div>
+		<div class="row-fluid">
+			<div class="span6">
+				<div class="exchange"></div>
+			</div>
+			<div class="span6">
+				<div class="civTrade"></div>
+			</div>
+		</div>
 	{{/if}}
 	{{#if locations}}
 		<div class="span6" id="locations"></div>

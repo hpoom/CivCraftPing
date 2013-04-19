@@ -8,9 +8,10 @@ define( [
   'jquery',
   'underscore',
   'backbone',
+	'moment',
 	'handlebars',
   'routers/ping', // Request our backbone router
-], function( $, _, Backbone, hbs, ping ) {
+], function( $, _, Backbone, moment, hbs, ping ) {
   var App = {
 		router: ping,
 		init: function () {
@@ -43,6 +44,9 @@ define( [
 					} else {
 						return options.inverse( this );
 					}
+				} );
+				hbs.registerHelper( 'momentFromNow', function( timestamp ) {
+					return moment( timestamp ).fromNow();
 				} );
 				
 				// Initialise GA
