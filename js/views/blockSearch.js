@@ -36,7 +36,7 @@ define( [
 			} else {
 				// Update image then fetch trade information from all sources
 				var selectedModel = this.collection.where( {name: item} )[0];
-				$( '#itemImage' ).html( '<img src="http://api.mineverse.com/image.php?id=' + selectedModel.get( 'icon' ) + '" class="blockIcon" />' );
+				//$( '#itemImage' ).html( '<img src="http://api.mineverse.com/image.php?id=' + selectedModel.get( 'icon' ) + '" class="blockIcon" />' );
 			}
 			// Get our /r/CivcraftExchange results
 			require( ['collections/reddit','views/exchange'], function( Reddit, ExchangeView ) {
@@ -47,13 +47,14 @@ define( [
 				} } );
 			} );
 			// Get our CivTrade results
-			/*
-			var tradeResults = new Backbone.Collection;
-			tradeResults.url = window.ping.domains.civTrade + '/shops.json?search=' + item;
-			tradeResults.fetch( { success: function( collection, response ) {
-				console.log( collection );
-			} } );
-			*/
+			require( ['views/civTrade'], function( CivTradeView ) {
+				var tradeResults = new Backbone.Collection;
+				//tradeResults.url = window.ping.domains.civTrade + '/shops.json?search=' + item;
+				tradeResults.url = window.ping.domains.hpoom + '/CivCraft/civTradeProxy.php?search=' + item + '&callback=?';
+				tradeResults.fetch( { success: function( collection, response ) {
+					var civTradeView = new CivTradeView( {collection: collection} );
+				} } );
+			} );
 		}
 	} );
   return BlockSearch;

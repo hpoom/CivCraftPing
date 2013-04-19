@@ -1,0 +1,26 @@
+<h4>Results from CivTrade</h4>
+<table class="table table-bordered table-hover">
+	<tbody>
+		{{#each trade}}
+			<tr>
+				<td>
+					<strong>{{item_name}}</strong>
+					<p class="pull-right">
+						<span class="label label-warning">{{reports_count}} reports</span>
+					</p>
+					<br/>
+					<p class="text-success">location {{location_x}},{{location_y}},{{location_z}} in {{world}}{{#if city}} - {{city}}{{/if}}</p>
+					<p class="text-info">submitted {{momentFromNow updated_at}} by {{#if seller_username}}{{seller_username}}{{else}}???{{/if}}</p>
+					<p class="lead">
+						{{#if buy_amount}}
+							Buy {{buy_amount}} for {{buy_price}}{{buy_currency}}<br/>
+						{{/if}}
+						{{#if sell_amount}}
+							Sell {{sell_amount}} for {{sell_price}}{{sell_currency}}<br/>
+						{{/if}}
+					</p>
+				</td>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>
